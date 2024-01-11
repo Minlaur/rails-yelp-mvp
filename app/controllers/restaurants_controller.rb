@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @review = Review.new
   end
 
   def new
@@ -19,10 +20,10 @@ class RestaurantsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-end
 
-private
+  private
 
-def restaurant_params
-  params.require(:restaurant).permit(:name, :address, :category)
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :address, :category)
+  end
 end
